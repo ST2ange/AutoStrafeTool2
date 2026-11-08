@@ -91,6 +91,16 @@ sm_autostrafe_mn_fwd_loop "0"     // 长滞空只折返一次（落地不抽，�
 
 ---
 
+## 源码
+
+本仓库只提供插件的**接口层**：[`src/AutoStrafeTool2.sp`](src/AutoStrafeTool2.sp)，含插件声明、ConVar 注册、指令入口。
+
+核心实现不随仓库发布，包括：空中加速的最优偏航角推导与临界角判定、整跳 / 半跳的摆动相位模型与折返时机、避让目标的扫描权重与换边迟滞、甩视角强拐的门槛与方向推断。
+
+> 要用插件请直接拿 `addons/sourcemod/plugins/AutoStrafeTool2.smx`。接口层是空壳，自行编译出来没有任何功能。
+
+---
+
 ## 卸载
 
 删掉这三个文件：

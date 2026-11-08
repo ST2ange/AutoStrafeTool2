@@ -1,0 +1,15 @@
+# ── GitHub 语言统计（Linguist）──────────────────────────────
+# .sp / .inc 一律计入 SourcePawn
+*.sp   linguist-language=SourcePawn
+*.inc  linguist-language=SourcePawn
+
+# 文档、配置、忽略文件不计入语言统计，避免把百分比摊薄
+*.md          linguist-documentation
+*.txt         linguist-documentation
+*.cfg         linguist-documentation
+*.games.txt   linguist-documentation
+.gitattributes linguist-documentation
+.gitignore     linguist-documentation
+
+# 编译产物按二进制处理，不做行尾转换
+*.smx   binary
