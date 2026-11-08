@@ -1,6 +1,7 @@
 ﻿# AutoStrafeTool2 | 实现最优加速与摆动模拟
 
 L4D2（求生之路 2）服务端 SourceMod 插件：空中自动最优加速、连跳、摆动模拟，以及僵尸 / 特感 / Witch 避让。
+由DeepSeek v4.1 Flash 编写，实机测试
 
 - **Steam**：STᗜ ‸ ᗜGE — https://steamcommunity.com/id/ST2ange/
 - **Bilibili**：剑聖STR様 — https://space.bilibili.com/399718078
