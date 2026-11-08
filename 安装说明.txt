@@ -1,0 +1,97 @@
+﻿AutoStrafeTool2 —— 安装说明
+====================================================================
+版本：2.7.3
+类型：L4D2 服务端 SourceMod 插件（空中自动加速 + 连跳 + 摆动 + 避让）
+作者：ST2ange、大肥鱼
+
+一、安装前确认
+--------------------------------------------------
+1. 已装 SourceMod 1.12 或更新版本
+   检查：控制台输入 sm version，能看到版本号
+2. 已装 DHooks（SourceMod 1.10 起已内置，无需单独下）
+   检查：控制台输入 sm exts list，列表里有 "DHooks"
+
+二、安装（三步）
+--------------------------------------------------
+1. 把压缩包里的 addons 和 cfg 两个文件夹，直接拖进：
+
+       ...\Left 4 Dead 2\left4dead2\
+
+   合并覆盖即可。装完应该是这样：
+
+       left4dead2\addons\sourcemod\plugins\AutoStrafeTool2.smx
+       left4dead2\addons\sourcemod\gamedata\AutoStrafeTool2.games.txt
+       left4dead2\cfg\sourcemod\AutoStrafeTool2.cfg
+
+   gamedata 那个文件不能少 —— 它提供 AirAccelerate 的函数地址，
+   缺了插件还能加载，但"引擎真值"失效，加速效果会明显变差。
+
+2. 开一局游戏，控制台输入：
+
+       sm plugins list
+
+   列表里应该能看到：
+
+       [SM]  AutoStrafeTool2
+
+3. 进游戏后聊天框输入：
+
+       !asm
+
+   弹出菜单就说明装好了。
+
+三、第一次用要知道的三条
+--------------------------------------------------
+    !asm      打开菜单（按数字键切功能，0 退出）
+    !aszl     指令清单（9 行，看一眼就全懂了）
+    !aszt     当前状态面板（模式/力度/速度/本跳/强拐/引擎参数）
+
+默认是关闭状态，要先在菜单里选一个模式（普通 / 八向 / 整跳 / 半跳），
+或者聊天框输入 !as / !asbx / !mn / !mnbt。
+
+四、配置文件
+--------------------------------------------------
+    cfg/sourcemod/AutoStrafeTool2.cfg
+
+所有参数都是 sm_autostrafe_ 开头，例如：
+
+    sm_autostrafe_mn_cam "0"              // 关掉镜头接管（觉得视角被拽就设 0）
+    sm_autostrafe_avoid_mob "1"           // 打开僵尸/特感/Witch 避让
+    sm_autostrafe_flick_rate "200"        // 甩视角强拐的触发门槛
+
+改完重进地图生效，或控制台：
+
+    sm plugins reload AutoStrafeTool2
+
+五、卸载
+--------------------------------------------------
+删掉这三个文件即可：
+
+    addons/sourcemod/plugins/AutoStrafeTool2.smx
+    addons/sourcemod/gamedata/AutoStrafeTool2.games.txt
+    cfg/sourcemod/AutoStrafeTool2.cfg
+
+六、常见问题
+--------------------------------------------------
+Q: sm plugins list 里显示 AutoStrafeTool2 但是红色的（error）
+A: 大概率是 gamedata 没放对位置。确认
+   addons/sourcemod/gamedata/AutoStrafeTool2.games.txt 存在，
+   然后 sm plugins reload AutoStrafeTool2 看报什么错。
+
+Q: 插件正常加载，但加速没效果
+A: 三个原因按顺序查：
+   1. 没开模式 —— 先 !as 或 !asm 里选一个
+   2. 服务器 sv_airaccelerate 是 0 —— 控制台 sm_autostrafe_aa 100 试试
+   3. 人在空中才生效，地面跑不会加速
+
+Q: 用了 !mn 之后视角被拽得难受
+A: 这是"接管视角"（mn_cam）。设 sm_autostrafe_mn_cam 0 就不碰视角了，
+   加速完全不受影响，只是画面不跟着摆。
+
+Q: 以前装过旧版 sm_autostrafe_l4d2.smx，要不要删
+A: 要删。两个同时存在会各自接管一次，行为会乱。
+   同时把旧的 cfg/sourcemod/sm_autostrafe_l4d2.cfg 也删掉（内容重复）。
+
+七、许可
+--------------------------------------------------
+仅供学习与个人服务器使用，请勿用于商业用途。

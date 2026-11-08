@@ -1,0 +1,5 @@
+# 编译产物与临时文件
+*.smx.bak
+*.log
+source/
+compile.log
