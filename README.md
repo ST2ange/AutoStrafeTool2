@@ -11,6 +11,7 @@ L4D2（求生之路 2）服务端 SourceMod 插件：空中自动最优加速、
 
 ## 安装
 
+点击右侧Releases  下载插件
 完整步骤见 **[安装说明.txt](安装说明.txt)**。
 
 简版：把 `addons` 和 `cfg` 两个文件夹拖进 `...\Left 4 Dead 2\left4dead2\`，合并覆盖即可。
